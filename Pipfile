@@ -11,6 +11,7 @@ sphinx-rtd-theme = "*"
 
 [packages]
 django = "*"
+django-split-settings = "*"
 
 [requires]
 python_version = "3.7"
