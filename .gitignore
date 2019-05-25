@@ -1,6 +1,9 @@
 # Docs build directory
 docs/build/
 
+# Local settings file
+adventure/settings/local.py
+
 led / optimized / DLL files
 __pycache__/
 *.py[cod]

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from adventure.settings.base import *
 from adventure.settings.components import databases
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -27,22 +28,6 @@ SECRET_KEY = '1@yr6(@@3o63a3&fs+2r7t906_m3&#1k)&yc9&o1^+b1ym_wa%'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
-
-# Application definition
-
-INSTALLED_APPS = [
-    # Adventure apps
-    'adventure.core',
-
-    # Django apps
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
