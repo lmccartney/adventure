@@ -26,3 +26,9 @@ ignored so please do not commit these files. As this project progresses, I will
 setup Sphinx-Autodoc with some custom configurations to generate documentation
 automagically from docstrings. Given this, please use docstrings liberally and
 preferably in reStructuredText format.
+
+## Code Quality
+
+I'm using Codacy because it's easy and free! I might setup my own linting and
+code inspection tools later, but this is easy for now and gets to the point
+that I highly value code quality.
