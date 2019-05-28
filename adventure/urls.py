@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+import adventure.magic.views as magic_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/v1/card/', magic_views.CardView.as_view()),
+    path('api/v1/print/', magic_views.PrintView.as_view()),
+    path('api/v1/set/', magic_views.SetView.as_view()),
 ]
