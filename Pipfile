@@ -8,11 +8,14 @@ flake8 = "*"
 pylint = "*"
 sphinx = "*"
 sphinx-rtd-theme = "*"
+jupyter = "*"
 
 [packages]
 django = "*"
 django-split-settings = "*"
 psycopg2 = "*"
+celery = "*"
+mtgsdk = "*"
 
 [requires]
 python_version = "3.7"

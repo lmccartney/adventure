@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+
 from adventure.settings.base import *
 from adventure.settings.components import databases
 
@@ -105,3 +106,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Celery Configs
+CELERY_BROKER_URL = 'amqp://rmq'
