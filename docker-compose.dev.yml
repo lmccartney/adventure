@@ -1,0 +1,36 @@
+# This is just to bring along some arbitrary services needed for development.
+version: '3.1'
+
+services:
+  rmq-workers:
+    build: .
+    command:
+      - celery -A adventure worker -l info
+
+  web:
+    build: .
+    environment:
+      - DJANGO_SETTINGS_MODULE=adventure.settings.environments.development
+    command:
+      - python3 manage.py migrate && python3 manage.py runserver
+
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - ./volumes/db/var/lib/postgresql/data:/var/lib/postgresql/data
+
+  rmq:
+    image: "rabbitmq:3-management"
+    hostname: "localhost"
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "WELIKEDAHCOOKIE"
+      RABBITMQ_DEFAULT_USER: "rabbitmq"
+      RABBITMQ_DEFAULT_PASS: "rabbitmq"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    labels:
+      NAME: "rmq"

@@ -1,11 +1,10 @@
 """List of database settings"""
-import os
 
 LOCAL = {
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
     'NAME': 'adventure',
-    'USER': 'adventure_app',
-    'PASSWORD': os.environ.get('DEV_DB_PW'),
+    'USER': 'postgres',
+    'PASSWORD': 'postgres',
     'HOST': 'localhost',
     'PORT': '',
 }

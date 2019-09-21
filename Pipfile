@@ -8,6 +8,7 @@ flake8 = "*"
 pylint = "*"
 sphinx = "*"
 sphinx-rtd-theme = "*"
+jupyter = "*"
 
 [packages]
 django = "*"
@@ -16,6 +17,8 @@ psycopg2 = "*"
 djangorestframework = "*"
 markdown = "*"
 django-filter = "*"
+celery = "*"
+mtgsdk = "*"
 
 [requires]
 python_version = "3.7"
