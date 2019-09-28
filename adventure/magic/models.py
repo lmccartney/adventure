@@ -1,3 +1,4 @@
+"""Models related to the magic app"""
 from enum import Enum
 
 from django.contrib.postgres.fields import ArrayField
@@ -5,6 +6,7 @@ from django.db import models
 
 
 class Colors(Enum):
+    """Valid colors in magic"""
     RED = 'Red'
     BLUE = 'Blue'
     GREEN = 'Green'
@@ -13,6 +15,7 @@ class Colors(Enum):
 
 
 class Rarity(Enum):
+    """Valid rarities in magic"""
     COMMON = 'Common'
     UNCOMMON = 'Uncommon'
     RARE = 'Rare'
@@ -64,6 +67,10 @@ class Print(models.Model):
 
     @classmethod
     def update(cls, printing):
+        """
+        Method to take a printing from the mtg sdk and update the database
+        with its data.
+        """
         card_defaults = {
             **{
                 'colors': printing.colors,
