@@ -8,4 +8,3 @@ include(
     f'environments/{os.environ.get("DJANGO_ENV", "local")}.py',
     optional('local.py'),
 )
-print(DATABASES)
