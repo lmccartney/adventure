@@ -10,9 +10,12 @@ services:
         - postgresql
 
 install:
-        - 'pip install pipenv'
-        - 'pipenv sync'
+        - pip install pipenv
+        - pipenv sync
+
+before_script:
+        - psql -c 'create datatbase adventure;' -U postgres
 
 script:
-        - 'pipenv run python manage.py makemigrations --dry-run --check'
-        - 'pipenv run python manage.py test'
+        - pipenv run python manage.py makemigrations --dry-run --check
+        - pipenv run python manage.py test
