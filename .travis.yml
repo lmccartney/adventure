@@ -6,6 +6,9 @@ python:
 env:
         - DJANGO_ENV=ci
 
+services:
+        - postgresql
+
 install:
         - 'pip install pipenv'
         - 'pipenv sync'
