@@ -14,7 +14,7 @@ install:
         - pipenv sync
 
 before_script:
-        - psql -c 'create datatbase adventure;' -U postgres
+        - psql -c 'create database adventure;' -U postgres
 
 script:
         - pipenv run python manage.py makemigrations --dry-run --check
