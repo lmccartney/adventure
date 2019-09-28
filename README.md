@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/lmccartney/adventure.svg?branch=master)]
+(https://travis-ci.org/lmccartney/adventure)
+
 # A Toy Django Project
 
 There isn't much point to this project as of yet, the inspiration was sparked by
