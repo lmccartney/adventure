@@ -1,7 +1,4 @@
 """File to configurecelery"""
-
-import os
-
 from celery import Celery
 
 
