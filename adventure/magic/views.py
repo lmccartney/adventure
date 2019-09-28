@@ -2,9 +2,9 @@
 from rest_framework import generics, serializers
 
 from .models import (
-        Card,
-        Print,
-        Set,
+    Card,
+    Print,
+    Set,
 )
 
 
