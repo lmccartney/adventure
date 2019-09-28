@@ -1,5 +1,7 @@
 language: python
 
+cache: pip
+
 python:
         - "3.7.3"
 
@@ -18,4 +20,7 @@ before_script:
 
 script:
         - pipenv run python manage.py makemigrations --dry-run --check
-        - pipenv run python manage.py test
+        - pipenv run coverage run --source '.' manage.py test
+
+after_script:
+        - python-codacy-coverage -r coverage.xml
