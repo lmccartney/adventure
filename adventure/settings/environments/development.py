@@ -10,19 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
-import os
-
-from adventure.settings.base import *
-from adventure.settings.components import databases
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '1@yr6(@@3o63a3&fs+2r7t906_m3&#1k)&yc9&o1^+b1ym_wa%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -65,7 +52,7 @@ WSGI_APPLICATION = 'adventure.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    'default': databases.LOCAL,
+    'default': databases.CI,
 }
 
 

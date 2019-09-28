@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 """
 WSGI config for adventure project.
 
@@ -13,7 +12,6 @@ import os
 from django.core.wsgi import get_wsgi_application
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'adventure.settings')
-=======
 import django
 from django.core.handlers.wsgi import WSGIHandler
 
@@ -27,6 +25,5 @@ def get_wsgi_application():
     django.setup(set_prefix=False)
     return WSGIHandler()
 
->>>>>>> 5d57666c11d189360f6edfd23b4eab1db43dffc5
 
 application = get_wsgi_application()
