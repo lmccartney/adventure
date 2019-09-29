@@ -25,3 +25,4 @@ script:
 after_script:
         - pipenv run coverage xml
         - pipenv run python-codacy-coverage -r coverage.xml
+        - pipenv run coveralls
