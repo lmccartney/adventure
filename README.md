@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/lmccartney/adventure.svg?branch=master)](https://travis-ci.org/lmccartney/adventure)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6f0a39d62a8b4c59abdfff00b61b9050)](https://www.codacy.com/manual/lmccartney/adventure?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=lmccartney/adventure&amp;utm_campaign=Badge_Grade)
+[![Coverage Status](https://coveralls.io/repos/github/lmccartney/adventure/badge.svg?branch=master)](https://coveralls.io/github/lmccartney/adventure?branch=master)
 
 # A Toy Django Project
 
