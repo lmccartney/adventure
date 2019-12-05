@@ -14,17 +14,16 @@ services:
         - postgresql
 
 install:
-        - pip install pipenv
-        - pipenv sync
+        - pip install -r requirements/base.txt
 
 before_script:
         - psql -c 'create database adventure;' -U postgres
 
 script:
-        - pipenv run python manage.py makemigrations --dry-run --check
-        - pipenv run coverage run --source '.' manage.py test
+        - python manage.py makemigrations --dry-run --check
+        - coverage run --source '.' manage.py test
 
 after_script:
-        - pipenv run coverage xml
-        - pipenv run python-codacy-coverage -r coverage.xml
-        - pipenv run coveralls
+        - coverage xml
+        - python-codacy-coverage -r coverage.xml
+        - coveralls
