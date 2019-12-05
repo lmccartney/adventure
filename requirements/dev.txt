@@ -1,0 +1,5 @@
+flake8
+pylint
+sphinx
+sphinx-rtd-theme
+jupyter
