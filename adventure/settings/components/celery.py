@@ -1,2 +1,2 @@
-class CelerySettings(type):
-    CELERY_BROKER_URL = 'amqp://rmq'
+"""Celery settings"""
+CELERY_BROKER_URL = 'amqp://rmq'

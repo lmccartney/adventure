@@ -48,6 +48,31 @@ class Card(models.Model):
     standard_legal = models.BooleanField(default=False)
     vintage_legal = models.BooleanField(default=False)
 
+    @classmethod
+    def from_mtgsdk_card(cls, mtgsdk_card):
+        """
+        Generate an adventure.Card from an mtgsdk.Card instance
+        :param mtgsdk.Card mtgsdk_card: a Card instance from the mtgsdk library
+        :return: the Card
+        :rtype: Card
+        """
+        card_defaults = {
+            **{
+                'colors': mtgsdk_card.colors,
+                'rarity': mtgsdk_card.rarity,
+                'converted_mana_cost': mtgsdk_card.cmc,
+            },
+            **{
+                f'{x["format"].lower()}_legal': bool(x['legality'] in ['Legal', 'Restricted'])
+                for x in mtgsdk_card.legalities
+            }
+        }
+        card, _ = Card.objects.update_or_create(
+            name=mtgsdk_card.name,
+            defaults=card_defaults,
+        )
+        return card
+
 
 class Set(models.Model):
     """
@@ -66,38 +91,26 @@ class Print(models.Model):
     artist = models.CharField(max_length=64)
 
     @classmethod
-    def update(cls, printing):
+    def update(cls, mtgsdk_card):
         """
         Method to take a printing from the mtg sdk and update the database
         with its data.
+        :param mtgsdk.Card mtgsdk_card: The printing to update
+        :return: The print
+        :rtype: Print
         """
-        card_defaults = {
-            **{
-                'colors': printing.colors,
-                'rarity': printing.rarity,
-                'converted_mana_cost': printing.cmc,
-            },
-            **{
-                f'{x["format"].lower()}_legal': bool(x['legality'] in ['Legal',
-                                                                       'Restricted'])
-                for x in printing.legalities
-            }
-        }
-        card, _ = Card.objects.update_or_create(
-            name=printing.name,
-            defaults=card_defaults,
-        )
+        card = Card.from_mtgsdk_card(mtgsdk_card)
 
         set_defaults = {
-            'name': printing.set_name,
+            'name': mtgsdk_card.set_name,
         }
         mtg_set, _ = Set.objects.update_or_create(
-            code=printing.set,
+            code=mtgsdk_card.set,
             defaults=set_defaults,
         )
 
         print_defaults = {
-            'artist': printing.artist,
+            'artist': mtgsdk_card.artist,
         }
         mtg_print, _ = Print.objects.update_or_create(
             card=card, set=mtg_set,
