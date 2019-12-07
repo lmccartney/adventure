@@ -43,4 +43,4 @@ jobs:
       install:
         - pip install pylint pylint-django
       script:
-        - pylint adventure/ --rcfile=.pylintrc
+        - python ci/run_pylint.py

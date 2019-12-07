@@ -141,6 +141,7 @@ disable=print-statement,
         deprecated-sys-function,
         exception-escape,
         comprehension-escape,
+        E0401,
         #  TODO Remove this when pylint_django plugin is loaded
         E1101,
 
