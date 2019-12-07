@@ -37,6 +37,7 @@ jobs:
         - '3.7.5'
       env:
         - DJANGO_ENV=ci
+        - DUMMY_DB=true
       install:
         - pip install flake8
       script:
