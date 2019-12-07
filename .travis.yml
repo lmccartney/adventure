@@ -3,27 +3,44 @@ language: python
 cache: pip
 
 python:
-        - "3.7.3"
-        - "3.7.5"
-        - "3.8.0"
+  - "3.7.3"
+  - "3.7.5"
+  - "3.8.0"
 
 env:
-        - DJANGO_ENV=ci
+  - DJANGO_ENV=ci
 
 services:
-        - postgresql
-
-install:
-        - pip install -r requirements/ci.txt
+  - postgresql
 
 before_script:
-        - psql -c 'create database adventure;' -U postgres
+  - psql -c 'create database adventure;' -U postgres
 
-script:
+jobs:
+  include:
+
+    - stage: 'Tests'
+      name: 'Unit Tests'
+      install:
+        - pip install -r requirements/ci.txt
+      script:
         - python manage.py makemigrations --dry-run --check
         - coverage run --source '.' manage.py test
-
-after_script:
+      after_script:
         - coverage xml
         - python-codacy-coverage -r coverage.xml
         - coveralls
+
+    - stage: 'Tests'
+      name: 'Flake8'
+      install:
+        - pip install flake8
+      script:
+        - flake8 .
+
+    - stage: 'Tests'
+      name: 'Pylint'
+      install:
+        - pip install pylint pylint-django
+      script:
+        - pylint .
