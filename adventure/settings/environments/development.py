@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 SECRET_KEY = '1@yr6(@@3o63a3&fs+2r7t906_m3&#1k)&yc9&o1^+b1ym_wa%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 ALLOWED_HOSTS = []
 
