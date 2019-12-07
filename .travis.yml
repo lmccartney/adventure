@@ -2,28 +2,27 @@ language: python
 
 cache: pip
 
-python:
-  - "3.7.3"
-  - "3.7.5"
-  - "3.8.0"
 
-env:
-  - DJANGO_ENV=ci
 
-# TODO have the linters use a dummy db so we can drop this service requirement from their jobs
-services:
-  - postgresql
 
-before_script:
-  - psql -c 'create database adventure;' -U postgres
 
 jobs:
   include:
 
     - stage: 'Tests'
       name: 'Unit Tests'
+      python:
+        - "3.6.9"
+        - "3.7.5"
+        - "3.8.0"
+      env:
+        - DJANGO_ENV=ci
+      services:
+        - postgresql
       install:
         - pip install -r requirements/ci.txt
+      before_script:
+        - psql -c 'create database adventure;' -U postgres
       script:
         - python manage.py makemigrations --dry-run --check
         - coverage run --source '.' manage.py test
@@ -34,6 +33,10 @@ jobs:
 
     - stage: 'Tests'
       name: 'Flake8'
+      python:
+        - '3.7.5'
+      env:
+        - DJANGO_ENV=ci
       install:
         - pip install flake8
       script:
@@ -41,6 +44,11 @@ jobs:
 
     - stage: 'Tests'
       name: 'Pylint'
+      python:
+        - '3.7.5'
+      env:
+        - DJANGO_ENV=ci
+        - DUMMY_DB=true
       install:
         - pip install pylint pylint-django
       script:

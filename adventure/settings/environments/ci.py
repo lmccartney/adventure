@@ -10,4 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 from adventure.settings.components.base import *
-from adventure.settings.components.databases.local_postgres import *
+if os.environ.get('DUMMY_DB'):
+    from adventure.settings.components.databases.dummy import *
+else:
+    from adventure.settings.components.databases.local_postgres import *
