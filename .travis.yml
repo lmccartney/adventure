@@ -43,4 +43,4 @@ jobs:
       install:
         - pip install pylint pylint-django
       script:
-        - python ci/run_pylint.py
+        - python ci/run_pylint.py --target=adventure/ --rcfile=.pylintrc --score=8
