@@ -8,9 +8,7 @@ jobs:
     - stage: 'Tests'
       name: 'Unit Tests'
       python:
-        - "3.6.9"
         - "3.7.5"
-        - "3.8.0"
       env:
         - DJANGO_ENV=ci
       services:

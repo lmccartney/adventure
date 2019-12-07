@@ -1,6 +1,4 @@
 -r base.txt
-flake8
-pylint
 coverage
 python-coveralls
 codacy-coverage
