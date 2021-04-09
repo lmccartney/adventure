@@ -2,7 +2,7 @@
 amqp==2.5.0
 billiard==3.6.0.0
 celery==4.3.0
-djangorestframework==3.10.3
+djangorestframework==3.11.2
 django-split-settings==1.0.0
 django==3.0.14
 kombu==4.6.3
